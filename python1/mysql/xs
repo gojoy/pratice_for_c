@@ -1,0 +1,37 @@
+Netid  State      Recv-Q Send-Q Local Address:Port                 Peer Address:Port                
+u_str  ESTAB      0      0      /var/run/dbus/system_bus_socket 12082                 * 11785                
+u_str  ESTAB      0      0       * 153119                * 153120               
+u_str  ESTAB      0      0      /var/run/dbus/system_bus_socket 145721                * 145720               
+u_str  ESTAB      0      0       * 233907                * 233908               
+u_str  ESTAB      0      0       * 11858                 * 12083                
+u_str  ESTAB      0      0      /run/systemd/journal/stdout 10389                 * 10388                
+u_str  ESTAB      0      0       * 145720                * 145721               
+u_str  ESTAB      0      0       * 234066                * 234067               
+u_str  ESTAB      0      0       * 11785                 * 12082                
+u_str  ESTAB      0      0       * 12356                 * 12357                
+u_str  ESTAB      0      0       * 12080                 * 12081                
+u_str  ESTAB      0      0       * 233910                * 233909               
+u_str  ESTAB      0      0       * 13048                 * 13049                
+u_str  ESTAB      0      0      /tmp/Aegis-<Guid(5A2C30A2-A87D-490A-9281-6765EDAD7CBA)> 234067                * 234066               
+u_str  ESTAB      0      0      /run/systemd/journal/stdout 150765                * 150764               
+u_str  ESTAB      0      0      /run/systemd/journal/stdout 11836                 * 11835                
+u_str  ESTAB      0      0      /run/systemd/journal/stdout 13049                 * 13048                
+u_str  ESTAB      0      0       * 233909                * 233910               
+u_str  ESTAB      0      0       * 12081                 * 12080                
+u_str  ESTAB      0      0      /run/systemd/journal/stdout 10624                 * 10623                
+u_str  ESTAB      0      0      /run/systemd/journal/stdout 12357                 * 12356                
+u_str  ESTAB      0      0       * 10388                 * 10389                
+u_str  ESTAB      0      0       * 153120                * 153119               
+u_str  ESTAB      0      0       * 10623                 * 10624                
+u_str  ESTAB      0      0       * 233908                * 233907               
+u_str  ESTAB      0      0       * 11835                 * 11836                
+u_str  ESTAB      0      0      /run/systemd/journal/stdout 11590                 * 11589                
+u_str  ESTAB      0      0       * 150764                * 150765               
+u_str  ESTAB      0      0      /var/run/dbus/system_bus_socket 12083                 * 11858                
+u_str  ESTAB      0      0       * 11589                 * 11590                
+u_str  ESTAB      0      0       * 153256                * 0                    
+tcp    ESTAB      0      0      115.28.149.105:33057                140.205.140.205:http                 
+tcp    ESTAB      0      0      115.28.149.105:ssh                  125.71.200.6:45726                
+tcp    ESTAB      0      0      127.0.0.1:48952                127.0.0.1:cdbroker             
+tcp    ESTAB      0      52     115.28.149.105:ssh                  125.71.200.6:15088                
+tcp    ESTAB      0      0        ::ffff:127.0.0.1:cdbroker               ::ffff:127.0.0.1:48952                
