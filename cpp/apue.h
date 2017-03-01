@@ -14,8 +14,13 @@
 #include <string.h>
 #include <unistd.h>
 #include <signal.h>
+#include <pthread.h>
+#include <sys/wait.h>
 
 #define FILE_MODE   (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+#define MAXLINE 32
+
+static int pfd1[2],pfd2[2];
 
 void err_msg(const char *,...);
 void err_dump(const char *,...);
@@ -24,6 +29,8 @@ void err_ret(const char *,...);
 void err_cont(const char *,...);
 void err_sys(const char *,...);
 void err_exit(const char *,...);
+
+void TELL_WAIT();
 
 static void
 err_doit(int errnoflag,int error,const char *fmt,va_list ap)
@@ -40,11 +47,9 @@ err_doit(int errnoflag,int error,const char *fmt,va_list ap)
 
 void err_sys(const char *fmt,...)
 {
-    va_list     ap;
-    va_start(ap,fmt);
-    err_doit(1,errno,fmt,ap);
-    va_end(ap);
-    exit(1);
+	printf("error:%s\n",fmt);
+    exit(-1);
 }
+
 
 

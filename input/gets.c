@@ -15,9 +15,9 @@ cmd[i++]=ch;
 int j=0;
 printf("this is cmd\n");
 while(cmd[j]!='\0')
-{
+	{
 //printf("this is cmd\n");
-if (cmd[j]=='\n') cmd[j]='0';
-putchar(cmd[j++]);
-}
+	if (cmd[j]=='\n') cmd[j]='0';
+	putchar(cmd[j++]);
+	}
 }

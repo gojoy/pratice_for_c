@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
         int client_sockfd;
             int len;
-                struct sockaddr_in remote_addr; //服务器端网络地址结构体
+            struct sockaddr_in remote_addr; //服务器端网络地址结构体
                     char buf[BUFSIZ];  //数据传送的缓冲区
                         memset(&remote_addr,0,sizeof(remote_addr)); //数据初始化--清零
                             remote_addr.sin_family=AF_INET; //设置为IP通信
