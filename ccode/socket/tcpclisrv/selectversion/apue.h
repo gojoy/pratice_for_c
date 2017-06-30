@@ -1,0 +1,1 @@
+/home/gg/codeproject/pratice_for_c/cpp/apue.h
