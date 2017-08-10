@@ -24,15 +24,13 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Solution s;
-    char buf[100]="hello world hello";
-    char *buf1=(char *)malloc(sizeof(char)*100);
-    sprintf(buf1,"hello world");
-    printf("buf1 is %s\n",buf1);
-    s.replaceSpace(buf,strlen(buf));
-//    buf="hello";
-    cout<<buf<<endl;
-    buf[1]='%%';
-    cout<<buf<<endl;
+   
+    cout<<"res is "<<endl;
+    double b=2;
+    int e=3;
+    
+    int res=s.Power(b,e);
+    cout<<res<<endl;
     return 0;
 }
 
