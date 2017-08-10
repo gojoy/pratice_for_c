@@ -291,3 +291,34 @@ void Solution::reOrderArray(vector<int>& array) {
           return false;
   }
   
+  bool Solution::IsPopOrder(vector<int> pushV, vector<int> popV) {
+      
+      vector<int> tmp;
+      for(int i=0,j=0;i<pushV.size();) {
+          tmp.push_back(pushV[i++]);
+          while(tmp.back()==popV[j] && j<popV.size()) {
+              tmp.pop_back();
+              j++;
+          }
+      }
+      for(auto i:tmp) 
+          cout<<i;
+      return tmp.empty();
+  }
+  
+  vector<int> Solution::PrintFromTopToBottom(TreeNode* root) {
+      
+      
+      TreeNode *tmp;
+      vector<int> res;
+      queue<TreeNode*> q;
+      q.push(root);
+      while(!q.empty()) {
+          tmp=q.back();
+          res.push_back(tmp->Val);
+          q.pop();
+          q.push(tmp->left);
+          q.push(tmp->right);
+      }
+      return res;
+  }

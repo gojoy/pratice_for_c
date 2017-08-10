@@ -24,13 +24,9 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Solution s;
-   
-    cout<<"res is "<<endl;
-    double b=2;
-    int e=3;
-    
-    int res=s.Power(b,e);
-    cout<<res<<endl;
+    vector<int> a={1,2,3,4,5};
+    vector<int> b={4,6,3,2,1};
+    cout<<s.IsPopOrder(a,b);
     return 0;
 }
 

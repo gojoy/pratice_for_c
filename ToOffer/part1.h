@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -85,8 +86,26 @@ public:
 //     输入一个链表，输出该链表中倒数第k个结点。
      ListNode* FindKthToTail(ListNode* pListHead, unsigned int k);
      
+//     输入一个链表，反转链表后，输出链表的所有元素
+     ListNode* ReverseList(ListNode* pHead);
+     
+     
+//     输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+     bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2);
+     
+//     输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。
+//     假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，
+//     序列4，5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。
+//     （注意：这两个序列的长度是相等的）
+     bool IsPopOrder(vector<int> pushV,vector<int> popV);
+     
+//     从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+     vector<int> PrintFromTopToBottom(TreeNode* root);
+     
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);
+    
+    bool isSubTree(TreeNode *a,TreeNode *b);
 //    int reminnumber(vector<int> a,int left,int right);
     
     
