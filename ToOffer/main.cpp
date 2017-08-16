@@ -24,9 +24,10 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Solution s;
-    vector<int> a={1,2,3,4,5};
-    vector<int> b={4,6,3,2,1};
-    cout<<s.IsPopOrder(a,b);
+    vector<int> t={1,2,3,4,5,6,7,0};
+    string str="kYVmIJVzYWPQLtIdKMmvkVSoKtqJANOfCCOfLVJEjjhbnPrDOwKCDeqhts";
+    
+    cout<<s.InversePairs(t);
     return 0;
 }
 

@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stack>
 #include <queue>
+#include <string>
 
 using namespace std;
 
@@ -38,6 +39,14 @@ struct ListNode {
 
     ListNode(int x) :
     val(x), next(NULL) {
+    }
+};
+
+struct RandomListNode {
+    int label;
+    struct RandomListNode *next, *random;
+    RandomListNode(int x) :
+            label(x), next(NULL), random(NULL) {
     }
 };
 
@@ -102,10 +111,52 @@ public:
 //     从上往下打印出二叉树的每个节点，同层节点从左至右打印。
      vector<int> PrintFromTopToBottom(TreeNode* root);
      
+     RandomListNode* Clone(RandomListNode* pHead);
+     
+//     输入一个字符串,按字典序打印出该字符串中字符的所有排列。
+//     例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。
+     vector<string> Permutation(string str);
+     
+     void getallPermutation(string* str,int from,int to,vector<string>* res);
+//     bool isswapp(string str, int from, int to);
+//     数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。
+//     由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0
+     int MoreThanHalfNum_Solution(vector<int> numbers);
+     
+//     输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
+     vector<int> GetLeastNumbers_Solution(vector<int> input, int k);
+     
+     void showvec(vector<int> v);
+     
+//     最大子数组的和
+     int FindGreatestSumOfSubArray(vector<int> array);
+//     求到n之前所有数中1 出现的次数
+     int NumberOf1Between1AndN_Solution(int n);
+     
+//     输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
+//     例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323
+     string PrintMinNumber(vector<int> numbers);
+     
+//     在一个字符串(1<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置
+     int FirstNotRepeatingChar(string str);
+     
+     
+     int InversePairs(vector<int> data);
+     
+//     统计一个数字在排序数组中出现的次数
+     int GetNumberOfK(vector<int> data ,int k);
+     
+     
+//     输入一棵二叉树，求该树的深度。
+//     从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。
+     int TreeDepth(TreeNode* pRoot);
+     
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);
     
     bool isSubTree(TreeNode *a,TreeNode *b);
+    
+    
 //    int reminnumber(vector<int> a,int left,int right);
     
     
