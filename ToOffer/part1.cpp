@@ -741,8 +741,37 @@ int Solution::GetNumberOfK(vector<int> data ,int k) {
     return res;
     }
 
+//int Solution::TreeDepth(TreeNode* pRoot) {
+//    if(pRoot==NULL)
+//        return -1;
+//    return 1+max(TreeDepth(pRoot->left),TreeDepth(pRoot->right));
+//}
+
+//非递归方法
 int Solution::TreeDepth(TreeNode* pRoot) {
+    if(pRoot==NULL) {
+        return 0;
+    }
+    queue<TreeNode *> q;
+    q.push(pRoot);
+    int level=0;
+    while(!q.empty()) {
+        int len=q.size();
+        level++;
+        while(len--) {
+            TreeNode *tmp=q.front();
+            q.pop();
+            if(tmp->left)
+                q.push(tmp->left);
+            if(tmp->right)
+                q.push(tmp->right);
+            
+        }
+    }
+    return level;
+}
+
+bool Solution::IsBalanced_Solution(TreeNode* pRoot) {
     if(pRoot==NULL)
-        return -1;
-    return 1+max(TreeDepth(pRoot->left),TreeDepth(pRoot->right));
+        return false;
 }
