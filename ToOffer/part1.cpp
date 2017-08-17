@@ -775,3 +775,32 @@ bool Solution::IsBalanced_Solution(TreeNode* pRoot) {
     if(pRoot==NULL)
         return false;
 }
+
+bool checkBST(vector<int> seq,int start,int end) {
+    cout<<"end is "<<end<<"start is "<<start<<endl;
+    if(end<=start)
+        return true;
+    int root=seq[end];
+    cout<<"root is "<<root<<endl;
+    int i=end;
+    for (i=end-1;i>=start;i--) {
+        if (seq[i]<root)
+            break;
+    }
+    cout<<"break i is "<<i<<endl;
+    for(;i>=start;i--) {
+        if (seq[i]>=root)
+            return false;
+    }
+    cout<<"i is "<<i<<endl;
+    return checkBST(seq,start,i) && checkBST(seq,i+1,end-1);
+}
+
+bool Solution::VerifySquenceOfBST(vector<int> sequence) {
+    int len=sequence.size();
+    if (len==0)
+        return false;
+    return checkBST(sequence,0,len-1);
+    
+}
+
