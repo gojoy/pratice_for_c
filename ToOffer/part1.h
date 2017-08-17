@@ -158,6 +158,13 @@ public:
 //     如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同
      bool VerifySquenceOfBST(vector<int> sequence);
      
+//     输入一颗二叉树和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。
+//     路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径
+     vector<vector<int> > FindPath(TreeNode* root,int expectNumber);
+     
+//     输入两个链表，找出它们的第一个公共结点
+     ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2);
+     
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);
     

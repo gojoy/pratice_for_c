@@ -14,16 +14,17 @@
 //即row++；
 
 void Solution::showvec(vector<int> v) {
-    for(int i=0;i<v.size();i++)
-        cout<<v[i]<<endl;;
-    
+    for (int i = 0; i < v.size(); i++)
+        cout << v[i] << endl;
+    ;
+
 }
 
-void swap(int &a,int &b) {
+void swap(int &a, int &b) {
     int tmp;
-    tmp=a;
-    a=b;
-    b=tmp;
+    tmp = a;
+    a = b;
+    b = tmp;
     return;
 }
 
@@ -430,113 +431,114 @@ int Solution::MoreThanHalfNum_Solution(vector<int> numbers) {
             times++;
         else
             times--;
-        
+
         if (times <= 0) {
             num = numbers[i];
-            times=1;
+            times = 1;
         }
-//        cout<<"i is "<<i<<"times is "<<times<<" num is "<<num<<endl;
+        //        cout<<"i is "<<i<<"times is "<<times<<" num is "<<num<<endl;
     }
-    times=0;
-    for(int i=0;i<len;i++) {
-        if(numbers[i]==num)
+    times = 0;
+    for (int i = 0; i < len; i++) {
+        if (numbers[i] == num)
             times++;
     }
-    if (times > len/2 )
+    if (times > len / 2)
         return num;
     else
         return 0;
 }
 
 vector<int> Solution::GetLeastNumbers_Solution(vector<int> input, int k) {
-    int len=input.size();
+    int len = input.size();
     vector<int> res;
-    if(k>len) 
+    if (k > len)
         return res;
     vector<int> other;
-    auto l=input.begin();
-    for(int i=0;i<k;i++)
+    auto l = input.begin();
+    for (int i = 0; i < k; i++)
         l++;
-    res.assign(input.begin(),l);
-    other.assign(l,input.end());
-//    cout<<"res is";
-//    showvec(res);
-//    cout<<"other len is "<<other.size()<<endl;
-//    showvec(other);
-    
-    int rlen=other.size();
+    res.assign(input.begin(), l);
+    other.assign(l, input.end());
+    //    cout<<"res is";
+    //    showvec(res);
+    //    cout<<"other len is "<<other.size()<<endl;
+    //    showvec(other);
+
+    int rlen = other.size();
     int rmin;
     int min;
-     
-    for(int i=0;i<k;i++) {
-        min=i;
-        rmin=0;
-        for(int j=i;j<k;j++) {
-//            cout<<res[j];
-            if(res[j]<res[min])
-                min=j;
+
+    for (int i = 0; i < k; i++) {
+        min = i;
+        rmin = 0;
+        for (int j = i; j < k; j++) {
+            //            cout<<res[j];
+            if (res[j] < res[min])
+                min = j;
         }
-//            cout<<"left ri is "<<res[min]<<endl;
-            swap(res[min],res[i]);
-        
-            for(int r=0;r<rlen;r++) {
-                if(other[r]<other[rmin])
-                    rmin=r;
-            }
-//            cout<<"rmax is "<<other[rmin]<<endl;
-            if(res[min]>other[rmin])
-                swap(res[min],other[rmin]);
-//            cout<<"ri is "<<res[i]<<endl;
+        //            cout<<"left ri is "<<res[min]<<endl;
+        swap(res[min], res[i]);
+
+        for (int r = 0; r < rlen; r++) {
+            if (other[r] < other[rmin])
+                rmin = r;
         }
+        //            cout<<"rmax is "<<other[rmin]<<endl;
+        if (res[min] > other[rmin])
+            swap(res[min], other[rmin]);
+        //            cout<<"ri is "<<res[i]<<endl;
+    }
     return res;
 }
 
 int max(int a, int b) {
-    if(a>b)
+    if (a > b)
         return a;
     else
         return b;
 }
 
 int Solution::FindGreatestSumOfSubArray(vector<int> array) {
-    int currsum=0;
-    int maxsum=array[0];
-    for(int i=0;i<array.size();i++) {
-        currsum=max(array[i],currsum+array[i]);
-        maxsum=max(maxsum,currsum);
+    int currsum = 0;
+    int maxsum = array[0];
+    for (int i = 0; i < array.size(); i++) {
+        currsum = max(array[i], currsum + array[i]);
+        maxsum = max(maxsum, currsum);
     }
     return maxsum;
 }
 
 //分别判断每一位的1的个数，由低到高诸位判断，其中每一位的个数都和高位ihighnum与地位ilowernum有关。
+
 int Solution::NumberOf1Between1AndN_Solution(int n) {
-    if(n<=0)
+    if (n <= 0)
         return 0;
-    int res=0;
-    int ifactor=1;
-    int icurrnum=0;
-    int ilowernum=0;
-    int ihighnum=0;
-    while(n/ifactor !=0 ) {
-        ilowernum=n-(n/ifactor)*ifactor;
-        icurrnum=(n/ifactor)%10;
-        ihighnum=n/(ifactor*10);
+    int res = 0;
+    int ifactor = 1;
+    int icurrnum = 0;
+    int ilowernum = 0;
+    int ihighnum = 0;
+    while (n / ifactor != 0) {
+        ilowernum = n - (n / ifactor) * ifactor;
+        icurrnum = (n / ifactor) % 10;
+        ihighnum = n / (ifactor * 10);
         switch (icurrnum) {
             case 0:
-//                当该位为0时，1的个数等于高位的数字*当前位数 20 h=2,c=0,l=0 个位1个数=2*1
-                res+=ihighnum*ifactor;
+                //                当该位为0时，1的个数等于高位的数字*当前位数 20 h=2,c=0,l=0 个位1个数=2*1
+                res += ihighnum*ifactor;
                 break;
             case 1:
-//                当该位为1时，1个数=高位个数*当前位数+低位个数+1 212时，h=2，c=1；low=2；十位的1个数为2*10+2+1
-                res+=ihighnum*ifactor+ilowernum+1;
+                //                当该位为1时，1个数=高位个数*当前位数+低位个数+1 212时，h=2，c=1；low=2；十位的1个数为2*10+2+1
+                res += ihighnum * ifactor + ilowernum + 1;
                 break;
             default:
-//                当该位为其他>1时，1个数=（高位个数+1）*当前位数 23，h=2,c=3,l=0 个位1个数=（2+1） *1
-                res+=(ihighnum+1)*ifactor;
+                //                当该位为其他>1时，1个数=（高位个数+1）*当前位数 23，h=2,c=3,l=0 个位1个数=（2+1） *1
+                res += (ihighnum + 1) * ifactor;
                 break;
         }
-        ifactor*=10;
-//        cout<<"low is "<< ilowernum <<" cur is "<<icurrnum<<" high is "<<ihighnum<<endl;
+        ifactor *= 10;
+        //        cout<<"low is "<< ilowernum <<" cur is "<<icurrnum<<" high is "<<ihighnum<<endl;
     }
     return res;
 }
@@ -589,21 +591,21 @@ int Solution::NumberOf1Between1AndN_Solution(int n) {
 //}
 
 int Solution::FirstNotRepeatingChar(string str) {
-    if(str.size()==0)
-            return -1;
-        char ch[256]={0};
-        for(int i=0;i<str.size();i++)
-            ch[str[i]]++;
-        
-        for(int i=0;i<256;i++) {
-            printf("%d ",ch[i]);
-        }
-        cout<<endl;
-        
-        for(int i=0;i<str.size();i++)
-            if(ch[str[i]]==1)
-                return i;
-        return 0;
+    if (str.size() == 0)
+        return -1;
+    char ch[256] = {0};
+    for (int i = 0; i < str.size(); i++)
+        ch[str[i]]++;
+
+    for (int i = 0; i < 256; i++) {
+        printf("%d ", ch[i]);
+    }
+    cout << endl;
+
+    for (int i = 0; i < str.size(); i++)
+        if (ch[str[i]] == 1)
+            return i;
+    return 0;
 }
 //
 //int Solution::InversePairs(vector<int> data) {
@@ -620,10 +622,10 @@ int Solution::FirstNotRepeatingChar(string str) {
 //    return count%1000000007;
 //}
 
-long long InversePairsCore(vector<int> &data,vector<int> &copy,int start,int end) {
-//    cout<<"inv start is "<<start<<"end is "<<end<<endl;
+long long InversePairsCore(vector<int> &data, vector<int> &copy, int start, int end) {
+    //    cout<<"inv start is "<<start<<"end is "<<end<<endl;
     if (start == end) {
-//        copy[start] = data[start];
+        //        copy[start] = data[start];
         return 0;
     }
     int length = (end - start) / 2;
@@ -642,47 +644,47 @@ long long InversePairsCore(vector<int> &data,vector<int> &copy,int start,int end
             copy[indexcopy--] = data[j--];
         }
     }
-//    cout<<"copy is indexcopy is " << indexcopy<<endl;
-//    for(int i=0;i<copy.size();i++) {
-//        cout<<copy[i]<<" ";
-//    }
-//    cout<<endl;
-        
+    //    cout<<"copy is indexcopy is " << indexcopy<<endl;
+    //    for(int i=0;i<copy.size();i++) {
+    //        cout<<copy[i]<<" ";
+    //    }
+    //    cout<<endl;
+
     for (; i >= start; i--)
         copy[indexcopy--] = data[i];
     for (; j >= start + length + 1; j--)
         copy[indexcopy--] = data[j];
-    
-//        cout<<"after copy is index is "<< indexcopy<<endl;
-//    for(int i=0;i<copy.size();i++) {
-//        cout<<copy[i]<<" ";
-//    }
+
+    //        cout<<"after copy is index is "<< indexcopy<<endl;
+    //    for(int i=0;i<copy.size();i++) {
+    //        cout<<copy[i]<<" ";
+    //    }
     return left + right + count;
 }
 
-long long inverse1(vector<int> &data,int start,int end) {
-    cout<<start<<" end "<<end<<endl;
-    if(start==end) {
-        cout<<"return 0"<<endl;
+long long inverse1(vector<int> &data, int start, int end) {
+    cout << start << " end " << end << endl;
+    if (start == end) {
+        cout << "return 0" << endl;
         return 0;
     }
-    int length=(end-start)/2;
-    long long left=inverse1(data,start,start+length);
-    long long right=inverse1(data,start+length+1,end);
+    int length = (end - start) / 2;
+    long long left = inverse1(data, start, start + length);
+    long long right = inverse1(data, start + length + 1, end);
     int i = start + length;
     int j = end;
     int indexcopy = end;
     long long count = 0;
-     while (i >= start && j >= start + length + 1) {
-        if (data[i] > data[j]) { 
+    while (i >= start && j >= start + length + 1) {
+        if (data[i] > data[j]) {
             i--;
             count = count + j - start - length; //count=count+j-(start+length+1)+1;
         } else {
             j--;
         }
     }
-    cout<<"count is "<<count<<endl;
-     return left + right + count;
+    cout << "count is " << count << endl;
+    return left + right + count;
 }
 
 int Solution::InversePairs(vector<int> data) {
@@ -694,52 +696,52 @@ int Solution::InversePairs(vector<int> data) {
     for (int i = 0; i < length; i++)
         copy.push_back(data[i]);
     long long count = InversePairsCore(data, copy, 0, length - 1);
-//    long long count=inverse1(data,0,length-1);
-    for(int i=0;i<data.size();i++) {
-        cout<<data[i]<<" ";
+    //    long long count=inverse1(data,0,length-1);
+    for (int i = 0; i < data.size(); i++) {
+        cout << data[i] << " ";
     }
-    cout<<endl;
+    cout << endl;
     //delete[]copy;
     return count % 1000000007;
 }
 
-int BinSearch(vector<int> data,int start,int end,int k) {
-    
-    while(end>=start) {
-        int mid=(end+start)/2;
-        if(data[mid]==k)
+int BinSearch(vector<int> data, int start, int end, int k) {
+
+    while (end >= start) {
+        int mid = (end + start) / 2;
+        if (data[mid] == k)
             return mid;
-        else if(data[mid]>k) {
-            end=mid-1;
+        else if (data[mid] > k) {
+            end = mid - 1;
         } else {
-            start=mid+1;
+            start = mid + 1;
         }
     }
     return -1;
 }
 
-int Solution::GetNumberOfK(vector<int> data ,int k) {
-            int pos;
-    pos=BinSearch(data,0,data.size()-1,k);
-    if(pos==-1) {
+int Solution::GetNumberOfK(vector<int> data, int k) {
+    int pos;
+    pos = BinSearch(data, 0, data.size() - 1, k);
+    if (pos == -1) {
         return 0;
     }
-    int res=1;
+    int res = 1;
 
-    for(int i=pos-1;i>=0;i--) {
-        if(data[i]==k)
+    for (int i = pos - 1; i >= 0; i--) {
+        if (data[i] == k)
             res++;
-        else if(data[i]<k)
+        else if (data[i] < k)
             break;
     }
-    for(int j=pos+1;j<data.size();j++) {
-        if(data[j]==k)
+    for (int j = pos + 1; j < data.size(); j++) {
+        if (data[j] == k)
             res++;
-        else if(data[j]>k)
+        else if (data[j] > k)
             break;
     }
     return res;
-    }
+}
 
 //int Solution::TreeDepth(TreeNode* pRoot) {
 //    if(pRoot==NULL)
@@ -748,59 +750,148 @@ int Solution::GetNumberOfK(vector<int> data ,int k) {
 //}
 
 //非递归方法
+
 int Solution::TreeDepth(TreeNode* pRoot) {
-    if(pRoot==NULL) {
+    if (pRoot == NULL) {
         return 0;
     }
     queue<TreeNode *> q;
     q.push(pRoot);
-    int level=0;
-    while(!q.empty()) {
-        int len=q.size();
+    int level = 0;
+    while (!q.empty()) {
+        int len = q.size();
         level++;
-        while(len--) {
-            TreeNode *tmp=q.front();
+        while (len--) {
+            TreeNode *tmp = q.front();
             q.pop();
-            if(tmp->left)
+            if (tmp->left)
                 q.push(tmp->left);
-            if(tmp->right)
+            if (tmp->right)
                 q.push(tmp->right);
-            
+
         }
     }
     return level;
 }
 
 bool Solution::IsBalanced_Solution(TreeNode* pRoot) {
-    if(pRoot==NULL)
+    if (pRoot == NULL)
         return false;
 }
 
-bool checkBST(vector<int> seq,int start,int end) {
-    cout<<"end is "<<end<<"start is "<<start<<endl;
-    if(end<=start)
+bool checkBST(vector<int> seq, int start, int end) {
+    cout << "end is " << end << "start is " << start << endl;
+    if (end <= start)
         return true;
-    int root=seq[end];
-    cout<<"root is "<<root<<endl;
-    int i=end;
-    for (i=end-1;i>=start;i--) {
-        if (seq[i]<root)
+    int root = seq[end];
+    cout << "root is " << root << endl;
+    int i = end;
+    for (i = end - 1; i >= start; i--) {
+        if (seq[i] < root)
             break;
     }
-    cout<<"break i is "<<i<<endl;
-    for(;i>=start;i--) {
-        if (seq[i]>=root)
+    cout << "break i is " << i << endl;
+    for (; i >= start; i--) {
+        if (seq[i] >= root)
             return false;
     }
-    cout<<"i is "<<i<<endl;
-    return checkBST(seq,start,i) && checkBST(seq,i+1,end-1);
+    cout << "i is " << i << endl;
+    return checkBST(seq, start, i) && checkBST(seq, i + 1, end - 1);
 }
 
 bool Solution::VerifySquenceOfBST(vector<int> sequence) {
-    int len=sequence.size();
-    if (len==0)
+    int len = sequence.size();
+    if (len == 0)
         return false;
-    return checkBST(sequence,0,len-1);
-    
+    return checkBST(sequence, 0, len - 1);
+
 }
 
+vector<vector<int> > FindPath1(TreeNode* root, int expectNumber) {
+    vector<vector<int> > res;
+    vector<int> trace;
+    int sum;
+    int flag;
+    stack<TreeNode *> q;
+    if (root == NULL) {
+        return res;
+    }
+    TreeNode *p;
+    p = root;
+    //    sum=root->Val;
+    while (!q.empty() || p) {
+        if (p) {
+            trace.push_back(p->Val);
+            sum += p->Val;
+            cout << p->Val << " ";
+            q.push(p);
+            if (!p->left && !p->right) {
+                cout << " trace is " << endl;
+                for (int i = 0; i < trace.size(); i++) {
+                    cout << trace[i];
+                }
+                cout << endl;
+                if (sum == expectNumber)
+                    res.push_back(trace);
+            }
+            p = p->left;
+        } else {
+            trace.pop_back();
+            p = q.top();
+            q.pop();
+            p = p->right;
+        }
+    }
+    return res;
+}
+
+void handPath(TreeNode *p, vector<vector<int> > &res, vector<int> t, int sum, int exp) {
+    if (p == NULL) {
+        return;
+    }
+    t.push_back(p->Val);
+    sum += p->Val;
+    if (!p->left && !p->right) {
+        if (sum == exp) {
+            res.push_back(t);
+        }
+        //        cout<<" sum is "<<sum<<" trace is "<<endl;
+        //        for(int i=0;i<t.size();i++) {
+        //            cout<<t[i]<<" ";
+        //        }
+        //        cout<<endl;
+        return;
+    }
+
+    handPath(p->left, res, t, sum, exp);
+    handPath(p->right, res, t, sum, exp);
+    //    if(p->left) {
+    //        t.push_back(p->left->Val);
+    //        sum+=p->left->Val;
+    //        handPath(p->left,res,t,sum,exp);
+    //    }
+    //    if(p->right) {
+    //        t.push_back(p->right->Val);
+    //        sum+=p->right->Val;
+    //        handPath(p->right,res,t,sum,exp);
+    //    }
+}
+
+vector<vector<int> >Solution::FindPath(TreeNode* root, int expectNumber) {
+    vector<vector<int> > res;
+    vector<int> trace;
+    if (root == NULL)
+        return res;
+    handPath(root, res, trace, 0, expectNumber);
+    return res;
+}
+
+ListNode* Solution::FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2) {
+    ListNode *p1 = pHead1;
+    ListNode *p2 = pHead2;
+    while (p1 != p2) {
+        p1 = (p1 == NULL ? pHead2 : p1->next);
+        p2 = (p2 == NULL ? pHead1 : p2->next);
+    }
+    return p1;
+}
