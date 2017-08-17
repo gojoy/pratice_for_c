@@ -151,8 +151,12 @@ public:
 //     从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。
      int TreeDepth(TreeNode* pRoot);
      
-     
+//     判断二叉树是否平衡
      bool IsBalanced_Solution(TreeNode* pRoot);
+     
+//     输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。
+//     如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同
+     bool VerifySquenceOfBST(vector<int> sequence);
      
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);

@@ -24,10 +24,8 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Solution s;
-    vector<int> t={1,2,3,4,5,6,7,0};
-    string str="kYVmIJVzYWPQLtIdKMmvkVSoKtqJANOfCCOfLVJEjjhbnPrDOwKCDeqhts";
-    
-    cout<<s.InversePairs(t);
+    vector<int> t={5,4,3,2,1};
+    cout<<s.VerifySquenceOfBST(t)<<endl;
     return 0;
 }
 
