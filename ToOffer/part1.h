@@ -23,6 +23,7 @@
 #include <stack>
 #include <queue>
 #include <string>
+#include <set>
 
 using namespace std;
 
@@ -164,6 +165,27 @@ public:
      
 //     输入两个链表，找出它们的第一个公共结点
      ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2);
+     
+//     一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字
+     void FindNumsAppearOnce(vector<int> data,int* num1,int *num2);
+     
+//     输入一个递增排序的数组和一个数字S，在数组中查找两个数，是的他们的和正好是S，
+//     如果有多对数字的和等于S，输出两个数的乘积最小的
+     vector<int> FindNumbersWithSum(vector<int> array,int sum);
+     
+//     每次喊到m-1的那个小朋友要出列唱首歌,然后可以在礼品箱中任意的挑选礼物,并且不再回到圈中,从他的下一个小朋友开始,
+//     继续0...m-1报数....这样下去....直到剩下最后一个小朋友。请你试着想下,哪个小朋友会得到这份礼品呢？
+//     (注：小朋友的编号是从0到n-1)
+     int LastRemaining_Solution(int n, int m);
+     
+//     求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+     int Sum_Solution(int n);
+     
+//     请实现一个函数用来匹配包括'.'和'*'的正则表达式。模式中的字符'.'表示任意一个字符，
+//     而'*'表示它前面的字符可以出现任意次（包含0次）。
+//     在本题中，匹配是指字符串的所有字符匹配整个模式。
+//     例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"和"ab*a"均不匹配
+     bool match(char* str, char* pattern);
      
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);

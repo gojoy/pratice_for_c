@@ -895,3 +895,78 @@ ListNode* Solution::FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2) {
     }
     return p1;
 }
+
+void Solution::FindNumsAppearOnce(vector<int> data, int* num1, int* num2) {
+    int len=data.size();
+    if (len==0)
+        return ;
+    set<int> s;
+    for (int i=0;i<len;i++) {
+        if(!s.insert(data[i]).second) {
+            s.erase(data[i]);
+        }
+    }
+    auto p=s.begin();
+    *num1=*p;
+    p++;
+    *num2=*p;
+    return;
+    
+}
+
+vector<int> Solution::FindNumbersWithSum(vector<int> array,int sum) {
+    vector<int > res;
+    multiset<int> s;
+    int len=array.size();
+    if(sum>array[len-1] || sum<array[0])
+        return res;
+    for(int i=0;i<len;i++) {
+        s.insert(array[i]);
+    }
+    for(int i=0;i<len;i++) {
+        if( s.find(sum-array[i])!=s.end()) {
+//            cout<<"find "<<array[i]<<endl;
+            res.push_back(array[i]);
+            res.push_back(sum-array[i]);
+            return res;
+        }
+    }
+    return res;
+}
+
+int Solution::LastRemaining_Solution(int n, int m) {
+    int count=n;
+//标记哪位同学出列
+    vector<int> isin(n,0);
+    int i=-1,step=0;
+    while(count>0) {
+        i++;
+//        模拟环
+        if( i>=n)
+            i=0;
+        if (isin[i]==1)
+            continue;
+        step++;
+        if(step==m) {
+            isin[i]=1;
+            count--;
+            step=0;
+        }
+    }
+    return i;
+}
+
+int Solution::Sum_Solution(int n) {
+    int res;
+        res=n;
+//        短路特性，当 &&左边为0时，右边不用计算
+        res && (res+=Sum_Solution(n-1));
+        return res;
+}
+
+bool Solution::match(char* str, char* pattern) {
+    if (strlen(str)==0)
+        return false;
+    if(str==NULL)
+        return false;
+}

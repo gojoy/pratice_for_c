@@ -24,18 +24,16 @@ using namespace std;
 int main(int argc, char** argv) {
     
     Solution s;
-    vector<int> t={5,4,3,2,1};
-    TreeNode *a,*b,*c,*d,*e;
-    a=new TreeNode(1);
-    b=new TreeNode(2);
-    c=new TreeNode(3);
-    d=new TreeNode(4);
-    e=new TreeNode(5);
-    a->left=b;
-    a->right=c;
-    b->left=d;
-    b->right=e;
-    s.FindPath(a,3);
+    vector<int> t={1,2,4,7,11,15};
+    vector<int> res;
+    char c[2]="";
+//    *c=NULL;
+    char pr[2]=".";
+    char *p;
+    p=pr;
+    cout<<s.match(c,p)<<"end"<<endl;
+    
+    
     
 //    cout<<s.VerifySquenceOfBST(t)<<endl;
     return 0;
