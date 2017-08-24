@@ -187,6 +187,14 @@ public:
 //     例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"和"ab*a"均不匹配
      bool match(char* str, char* pattern);
      
+//     对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。
+//     例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。
+     string LeftRotateString(string str, int n);
+     
+//     请找出数组中任意一个重复的数字。 
+//     例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。
+     bool duplicate(int numbers[], int length, int* duplication);
+     
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);
     

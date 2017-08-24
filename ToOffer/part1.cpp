@@ -964,9 +964,106 @@ int Solution::Sum_Solution(int n) {
         return res;
 }
 
+
+//bool same(char *str,int &i,char *p,int &j) {
+//    if(p[j]=='*') {
+//        j++;
+//        return same(str,i,p,j);
+//    }
+//    if(j==strlen(p)-1)
+//        return eq(str[i],p[j]);
+//    if(p[j+1]!='*') {
+//        if(!str[i],p[j])
+//            return false;
+//        else {
+//            i++;
+//            j++;
+//            return same(str,i,p,j);
+//        }
+//            
+//    }
+////    j+1为*的情况
+////    当前不匹配，则*作用为0个 j+2
+//    if(!eq(str[i],p[j])) {
+//        if(j<strlen(p)-2){
+//            j=j+2;
+//            return same(str,i,p,j);
+//        }else
+//            return false;
+//    }else {
+////        当前匹配
+//        if(i==strlen(str)-1)
+//            return true;
+//        if(j<strlen(p)-2 && eq(str[i],p[j+2])) {
+//            j=j+2;
+//            return same(str,i,p,j);
+//        }
+//        else {
+//            while( i<strlen(str) && eq(str[i++],p[j]) );
+//            if(i==strlen(str))
+//                return true;
+//            return same(str,i,p,j);
+//        }
+//    }  
+//}
+
+bool same(char *str,int i,char *p,int j) {
+    if(i==strlen(str) && j==strlen(p) ) {
+        cout<<"j is "<<j<<endl;
+        return true;
+    }
+    if(i!=strlen(str) && j==strlen(p))
+        return false;
+//    第二个为*时
+    if(j+1<strlen(p) && p[j+1]=='*') {
+//        当当前匹配时
+        if(i!=strlen(str) && ((str[i]==p[j]) || p[j]=='.' )) {
+//            *为出现0次或者出现1次
+            return same(str,i,p,j+2) ||  same(str,i+1,p,j);
+        } else {
+//            当前不相等，则*为出现0次
+            return same(str,i,p,j+2);
+        }
+    }
+//    if( (i!=strlen(str) )&& ( str[i]==p[j] || p[j]=='.' ) )
+    if( (i!=strlen(str) )&& ( str[i]==p[j] || p[j]=='.' ) )
+        return same(str,i+1,p,j+1);
+    return false;
+}
+
 bool Solution::match(char* str, char* pattern) {
-    if (strlen(str)==0)
+
+    if(str==NULL || pattern==NULL)
         return false;
-    if(str==NULL)
+    int i=0,j=0;
+    
+    return same(str,i,pattern,j);
+}
+
+string Solution::LeftRotateString(string str, int n) {
+    if (n<0)
+        return NULL;
+    if(n==0)
+        return str;
+    string tmp="";
+//    取子串
+    tmp=str.substr(0,n);
+//  移除子串
+    str.erase(0,n);
+    str=str+tmp;
+    return str;
+}
+
+bool Solution::duplicate(int numbers[], int length, int* duplication) {
+    if (length<2)
         return false;
+    set<int> s;
+    s.insert(numbers[0]);
+    for (int i=1;i<length;i++) {
+        if ( !s.insert(numbers[i]).second ) {
+            *duplication=numbers[i];
+            return true;
+        }
+    }
+    return false;
 }

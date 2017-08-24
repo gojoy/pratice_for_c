@@ -26,12 +26,12 @@ int main(int argc, char** argv) {
     Solution s;
     vector<int> t={1,2,4,7,11,15};
     vector<int> res;
-    char c[2]="";
+    char c[ ]="aaa";
 //    *c=NULL;
-    char pr[2]=".";
+    char pr[]=".*b";
     char *p;
     p=pr;
-    cout<<s.match(c,p)<<"end"<<endl;
+    cout<<s.match(c,p)<<" end"<<endl;
     
     
     
