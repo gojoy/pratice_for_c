@@ -195,6 +195,11 @@ public:
 //     例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。
      bool duplicate(int numbers[], int length, int* duplication);
      
+//     。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 
+//     例如 a b c e s f c s a d e e 矩阵中包含一条字符串"bcced"的路径，但是矩阵中不包含"abcb"路径，
+//     因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。
+     bool hasPath(char* matrix, int rows, int cols, char* str);
+     
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);
     

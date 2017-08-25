@@ -897,37 +897,37 @@ ListNode* Solution::FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2) {
 }
 
 void Solution::FindNumsAppearOnce(vector<int> data, int* num1, int* num2) {
-    int len=data.size();
-    if (len==0)
-        return ;
+    int len = data.size();
+    if (len == 0)
+        return;
     set<int> s;
-    for (int i=0;i<len;i++) {
-        if(!s.insert(data[i]).second) {
+    for (int i = 0; i < len; i++) {
+        if (!s.insert(data[i]).second) {
             s.erase(data[i]);
         }
     }
-    auto p=s.begin();
-    *num1=*p;
+    auto p = s.begin();
+    *num1 = *p;
     p++;
-    *num2=*p;
+    *num2 = *p;
     return;
-    
+
 }
 
-vector<int> Solution::FindNumbersWithSum(vector<int> array,int sum) {
+vector<int> Solution::FindNumbersWithSum(vector<int> array, int sum) {
     vector<int > res;
     multiset<int> s;
-    int len=array.size();
-    if(sum>array[len-1] || sum<array[0])
+    int len = array.size();
+    if (sum > array[len - 1] || sum < array[0])
         return res;
-    for(int i=0;i<len;i++) {
+    for (int i = 0; i < len; i++) {
         s.insert(array[i]);
     }
-    for(int i=0;i<len;i++) {
-        if( s.find(sum-array[i])!=s.end()) {
-//            cout<<"find "<<array[i]<<endl;
+    for (int i = 0; i < len; i++) {
+        if (s.find(sum - array[i]) != s.end()) {
+            //            cout<<"find "<<array[i]<<endl;
             res.push_back(array[i]);
-            res.push_back(sum-array[i]);
+            res.push_back(sum - array[i]);
             return res;
         }
     }
@@ -935,22 +935,22 @@ vector<int> Solution::FindNumbersWithSum(vector<int> array,int sum) {
 }
 
 int Solution::LastRemaining_Solution(int n, int m) {
-    int count=n;
-//标记哪位同学出列
-    vector<int> isin(n,0);
-    int i=-1,step=0;
-    while(count>0) {
+    int count = n;
+    //标记哪位同学出列
+    vector<int> isin(n, 0);
+    int i = -1, step = 0;
+    while (count > 0) {
         i++;
-//        模拟环
-        if( i>=n)
-            i=0;
-        if (isin[i]==1)
+        //        模拟环
+        if (i >= n)
+            i = 0;
+        if (isin[i] == 1)
             continue;
         step++;
-        if(step==m) {
-            isin[i]=1;
+        if (step == m) {
+            isin[i] = 1;
             count--;
-            step=0;
+            step = 0;
         }
     }
     return i;
@@ -958,10 +958,10 @@ int Solution::LastRemaining_Solution(int n, int m) {
 
 int Solution::Sum_Solution(int n) {
     int res;
-        res=n;
-//        短路特性，当 &&左边为0时，右边不用计算
-        res && (res+=Sum_Solution(n-1));
-        return res;
+    res = n;
+    //        短路特性，当 &&左边为0时，右边不用计算
+    res && (res += Sum_Solution(n - 1));
+    return res;
 }
 
 
@@ -1007,63 +1007,97 @@ int Solution::Sum_Solution(int n) {
 //    }  
 //}
 
-bool same(char *str,int i,char *p,int j) {
-    if(i==strlen(str) && j==strlen(p) ) {
-        cout<<"j is "<<j<<endl;
+bool same(char *str, int i, char *p, int j) {
+    if (i == strlen(str) && j == strlen(p)) {
+        cout << "j is " << j << endl;
         return true;
     }
-    if(i!=strlen(str) && j==strlen(p))
+    if (i != strlen(str) && j == strlen(p))
         return false;
-//    第二个为*时
-    if(j+1<strlen(p) && p[j+1]=='*') {
-//        当当前匹配时
-        if(i!=strlen(str) && ((str[i]==p[j]) || p[j]=='.' )) {
-//            *为出现0次或者出现1次
-            return same(str,i,p,j+2) ||  same(str,i+1,p,j);
+    //    第二个为*时
+    if (j + 1 < strlen(p) && p[j + 1] == '*') {
+        //        当当前匹配时
+        if (i != strlen(str) && ((str[i] == p[j]) || p[j] == '.')) {
+            //            *为出现0次或者出现1次
+            return same(str, i, p, j + 2) || same(str, i + 1, p, j);
         } else {
-//            当前不相等，则*为出现0次
-            return same(str,i,p,j+2);
+            //            当前不相等，则*为出现0次
+            return same(str, i, p, j + 2);
         }
     }
-//    if( (i!=strlen(str) )&& ( str[i]==p[j] || p[j]=='.' ) )
-    if( (i!=strlen(str) )&& ( str[i]==p[j] || p[j]=='.' ) )
-        return same(str,i+1,p,j+1);
+    //    if( (i!=strlen(str) )&& ( str[i]==p[j] || p[j]=='.' ) )
+    if ((i != strlen(str))&& (str[i] == p[j] || p[j] == '.'))
+        return same(str, i + 1, p, j + 1);
     return false;
 }
 
 bool Solution::match(char* str, char* pattern) {
 
-    if(str==NULL || pattern==NULL)
+    if (str == NULL || pattern == NULL)
         return false;
-    int i=0,j=0;
-    
-    return same(str,i,pattern,j);
+    int i = 0, j = 0;
+
+    return same(str, i, pattern, j);
 }
 
 string Solution::LeftRotateString(string str, int n) {
-    if (n<0)
+    if (n < 0)
         return NULL;
-    if(n==0)
+    if (n == 0)
         return str;
-    string tmp="";
-//    取子串
-    tmp=str.substr(0,n);
-//  移除子串
-    str.erase(0,n);
-    str=str+tmp;
+    string tmp = "";
+    //    取子串
+    tmp = str.substr(0, n);
+    //  移除子串
+    str.erase(0, n);
+    str = str + tmp;
     return str;
 }
 
 bool Solution::duplicate(int numbers[], int length, int* duplication) {
-    if (length<2)
+    if (length < 2)
         return false;
     set<int> s;
     s.insert(numbers[0]);
-    for (int i=1;i<length;i++) {
-        if ( !s.insert(numbers[i]).second ) {
-            *duplication=numbers[i];
+    for (int i = 1; i < length; i++) {
+        if (!s.insert(numbers[i]).second) {
+            *duplication = numbers[i];
             return true;
         }
     }
+    return false;
+}
+
+bool seekpath(char *matrix, int rows, int cols, bool *ispath, char *str, int pos, int nextstr) {
+
+    if (pos < 0 || pos > rows * cols || ispath[pos] || matrix[pos] != str[nextstr])
+        return false;
+    if (nextstr == strlen(str) - 1)
+        return true;
+    cout<<"pos is "<<pos<<endl;
+    ispath[pos] = true;
+    if (seekpath(matrix, rows, cols, ispath, str, pos + 1, nextstr + 1) ||
+            seekpath(matrix, rows, cols, ispath, str, pos - 1, nextstr + 1) ||
+            seekpath(matrix, rows, cols, ispath, str, pos + cols, nextstr + 1) ||
+            seekpath(matrix, rows, cols, ispath, str, pos - cols, nextstr + 1)) {
+        return true;
+    }
+    ispath[pos] = false;
+    return false;
+}
+
+bool Solution::hasPath(char* matrix, int rows, int cols, char* str) {
+    if (matrix == NULL || rows <= 0 || cols <= 0)
+        return false;
+
+    bool ispath[rows * cols];
+    for(int x=0;x<rows*cols;x++)
+        ispath[x]=false;
+    for (int j = 0; j < rows; j++)
+        for (int i = 0; i < cols; i++) {
+            cout<<"in main pos is "<<j*cols+i<<endl;
+            if (seekpath(matrix, rows, cols, ispath, str, j * cols + i, 0))
+                return true;
+        }
     return false;
 }

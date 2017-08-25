@@ -26,12 +26,12 @@ int main(int argc, char** argv) {
     Solution s;
     vector<int> t={1,2,4,7,11,15};
     vector<int> res;
-    char c[ ]="aaa";
+    char c[ ]="ABCESFCSADEE";
 //    *c=NULL;
-    char pr[]=".*b";
+    char pr[]="ABCCED";
     char *p;
     p=pr;
-    cout<<s.match(c,p)<<" end"<<endl;
+    cout<<s.hasPath(c,3,4,p)<<endl;
     
     
     
