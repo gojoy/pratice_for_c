@@ -21,7 +21,7 @@ using namespace std;
 /*
  * 
  */
-int main(int argc, char** argv) {
+int tmain(int argc, char** argv) {
     
     Solution s;
     vector<int> t={1,2,4,7,11,15};
