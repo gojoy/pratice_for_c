@@ -11,6 +11,8 @@
 #if TEST==1
 
 #include <stdio.h>
+#include <iostream>
+using namespace std;
 
 class A {
 public:
@@ -61,15 +63,37 @@ public:
 //        int b;
     };
 
+    class HasPtr {
+    public:
+        HasPtr(const string &s=string()):ps(new string(s)),i(0) { printf("construct hasptr\n"); }
+        
+        HasPtr(const HasPtr& h):ps(new string(*h.ps)),i(h.i) { printf("copy hasptr\n"); };
+        //HasPtr(const HasPtr &) { printf("copy\n"); }
+        
+        ~HasPtr() { delete ps; printf("delete ps\n"); }
+        
+        string *ps;
+        int i;
+    };
+    
+    
+    HasPtr f(HasPtr hp) {
+        printf("begin f\n");
+        HasPtr res=hp;
+        //printf("now copy\n");
+        res.i=10;
+        return res;
+    }
     
     int main() {
         
-       // A a3=A(1);
-        B b;
-        A a=b;
-        printf("b.a is %d\n",a.a);
-        
-         
+        HasPtr h=HasPtr("hello");
+//        printf("h is %s\n",h.ps);
+        cout<<*h.ps<<endl;
+        HasPtr r=f(h);
+        cout<<"r is "<<r.i<<endl;
+        //cout<<*r.ps<<endl;
+        printf("end\n");
         return 0;
     }
     
