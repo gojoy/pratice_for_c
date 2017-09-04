@@ -14,6 +14,8 @@
 #ifndef PART1_H
 #define PART1_H
 
+#define TEST 1
+
 #include <vector>
 #include <iostream>
 #include <string.h>
@@ -112,6 +114,22 @@ public:
 //     从上往下打印出二叉树的每个节点，同层节点从左至右打印。
      vector<int> PrintFromTopToBottom(TreeNode* root);
      
+//     给定一颗二叉搜索树，请找出其中的第k大的结点。
+//     例如， 5 / \ 3 7 /\ /\ 2 4 6 8 中，按结点数值大小顺序第三个结点的值为4。
+     TreeNode* KthNode(TreeNode* pRoot, int k);
+     
+     void prePrintTree(TreeNode *t);
+     
+     void prePrintTree1(TreeNode *root);
+     
+     void midPrintTree(TreeNode *t);
+     
+     void midPrintTree1(TreeNode *t);
+     
+     void postPrintTree(TreeNode *t);
+     
+     void printTree(TreeNode *t);
+     
      RandomListNode* Clone(RandomListNode* pHead);
      
 //     输入一个字符串,按字典序打印出该字符串中字符的所有排列。
@@ -199,6 +217,8 @@ public:
 //     例如 a b c e s f c s a d e e 矩阵中包含一条字符串"bcced"的路径，但是矩阵中不包含"abcb"路径，
 //     因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。
      bool hasPath(char* matrix, int rows, int cols, char* str);
+     
+     int maxDistanceTwoNode(TreeNode *t);
      
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);

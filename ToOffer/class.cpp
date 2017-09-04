@@ -3,12 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+#undef TEST
+
+#define TEST 1
+
+#if TEST==1
+
 #include <stdio.h>
 
 class A {
 public:
 
-    A() {printf("A \n");this->a=10;}
+    A() { printf("A\n");this->a=10;}
+    A(int num):a(num) {printf("A \n");}
+    A(const A& orign):a(orign.a) { printf("copy A\n");};
 
     virtual void foo() { printf("A:parents,foo\n");}
     
@@ -25,8 +34,9 @@ public:
     class B : public A {
     public:
 
-        B() { printf("B \n");this->a=10; }
-
+        B() { printf("B \n"); this->a=11;}
+        B(int num):b(num) { printf("construct B\n"); }
+       
         void foo() { printf("B:foo\n"); }
         
         void bar() { printf("B:bar\n"); }
@@ -34,6 +44,9 @@ public:
         void son() { printf("son\n"); }
         
         ~B() { printf("~B\n"); }
+        //int a;
+    protected:
+        int b;
     };
     
     class C {
@@ -48,29 +61,16 @@ public:
 //        int b;
     };
 
+    
     int main() {
-//        
-//        A *c = new B;
-//       
-//        c->foo();
-//        c->bar();
-//        printf("size c is %d\n",sizeof(A));
-//        delete c;
-//       // A *a=new A;
-//        printf("\n~~~~~~~~~~~~~~~\n");
-//        B *b=new B;
-//        b->foo();
-//        b->bar();
-//        printf("size b is %d\n",sizeof(b));
-////        delete b;
-//        //delete c;
         
-        printf("\n~~~~~~~~~~~~~~~\n");
-//        A *a=new A();
-        A a;
-        a.bar();
-        printf("%d\n",a.a);
+       // A a3=A(1);
+        B b;
+        A a=b;
+        printf("b.a is %d\n",a.a);
         
-        
+         
         return 0;
     }
+    
+#endif
