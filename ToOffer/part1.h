@@ -132,6 +132,22 @@ public:
      
      void printTree(TreeNode *t);
      
+//     给定一颗二叉搜索树，请找出其中的第k大的结点。
+//     例如， 5 / \ 3 7 /\ /\ 2 4 6 8 中，按结点数值大小顺序第三个结点的值为4。
+     TreeNode* KthNode(TreeNode* pRoot, int k);
+     
+     void prePrintTree(TreeNode *t);
+     
+     void prePrintTree1(TreeNode *root);
+     
+     void midPrintTree(TreeNode *t);
+     
+     void midPrintTree1(TreeNode *t);
+     
+     void postPrintTree(TreeNode *t);
+     
+     void printTree(TreeNode *t);
+     
      RandomListNode* Clone(RandomListNode* pHead);
      
 //     输入一个字符串,按字典序打印出该字符串中字符的所有排列。
