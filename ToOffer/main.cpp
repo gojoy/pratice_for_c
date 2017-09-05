@@ -10,32 +10,42 @@
  *
  * Created on 2017年7月31日, 下午4:23
  */
+#include "part1.h"
+
+#if TEST==0
 
 #include <cstdlib>
 #include <string.h>
 #include <iostream>
 #include <vector>
-#include "part1.h"
 using namespace std;
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-    
+    cerr<<"begin\n";
     Solution s;
-    vector<int> t={1,2,4,7,11,15};
+    vector<int> pre={1,2,4,6,8,7,9,5,3};
+    vector<int> mid={8,6,4,7,9,2,5,1,3};
     vector<int> res;
-    char c[ ]="ABCESFCSADEE";
-//    *c=NULL;
-    char pr[]="ABCCED";
-    char *p;
-    p=pr;
-    cout<<s.hasPath(c,3,4,p)<<endl;
+    TreeNode *t;
+    t=s.reConstructBinaryTree(pre,mid);
+
+    cout<<"print"<<endl;
+    s.midPrintTree(t);
+    cout<<endl<<"stack res is "<<endl;
+    s.midPrintTree1(t);
+    cout<<"knode is"<<s.KthNode(t,5)->Val<<endl;
     
+//    res=s.PrintFromTopToBottom(t);
+//    cout<<"show res"<<endl;
+//    for (int i=0;i<res.size();i++) {
+//        cout<<res[i]<<" ";
+//    }
+    cout<<endl;
+    cout<<"distance is "<<s.maxDistanceTwoNode(t)<<endl;
     
-    
-//    cout<<s.VerifySquenceOfBST(t)<<endl;
     return 0;
 }
-
+#endif

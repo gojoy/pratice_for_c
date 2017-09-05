@@ -102,7 +102,7 @@ TreeNode *Solution::constructtree(vector<int> pre, int lb, int le, vector<int> v
         return NULL;
     }
     TreeNode *res = new TreeNode(pre[lb]);
-    for (int i = rb; i < re; i++) {
+    for (int i = rb; i <=re; i++) {
         if (pre[lb] == vin[i]) {
             res->left = constructtree(pre, lb + 1, lb + i - rb, vin, rb, i - 1);
             res->right = constructtree(pre, lb + i - rb + 1, le, vin, i + 1, re);
@@ -329,19 +329,117 @@ bool Solution::IsPopOrder(vector<int> pushV, vector<int> popV) {
 
 vector<int> Solution::PrintFromTopToBottom(TreeNode* root) {
 
-
+    
     TreeNode *tmp;
     vector<int> res;
+     if (root==NULL) {
+        cerr<<"print error:root NULL\n"<<endl;
+        return res;
+    }
     queue<TreeNode*> q;
     q.push(root);
     while (!q.empty()) {
-        tmp = q.back();
+        tmp = q.front();
         res.push_back(tmp->Val);
+        cout<<tmp->Val;
         q.pop();
-        q.push(tmp->left);
-        q.push(tmp->right);
+        if (tmp->left)
+            q.push(tmp->left);
+        if (tmp->right)
+            q.push(tmp->right);
     }
     return res;
+}
+
+TreeNode* Solution::KthNode(TreeNode* pRoot, int k) {
+     if (pRoot==NULL)
+        return NULL;
+    stack<TreeNode*> s;
+    TreeNode *t;
+    t=pRoot;
+    while(t) {
+        s.push(t);
+        t=t->left;
+    }
+    while(!s.empty()){
+        t=s.top();
+        if(k==1) {
+            return t;
+        }
+//        cout<<t->Val<<" ";
+        s.pop();
+        k--;
+        if (t->right)
+            s.push(t->right);
+    }
+    return t;
+}
+
+void Solution::prePrintTree(TreeNode *t) {
+    if (t==NULL)
+        return;
+    cout<<t->Val<<" ";
+    prePrintTree(t->left);
+    prePrintTree(t->right);
+}
+
+void Solution::midPrintTree1(TreeNode *root) {
+    if (root==NULL)
+        return;
+    stack<TreeNode*> s;
+    TreeNode *t;
+    t=root;
+    while(t) {
+        s.push(t);
+        t=t->left;
+    }
+    while(!s.empty()){
+        t=s.top();
+        cout<<t->Val<<" ";
+        s.pop();
+        if (t->right)
+            s.push(t->right);
+    }
+}
+
+void Solution::midPrintTree(TreeNode *t) {
+    if (t==NULL)
+        return;
+    midPrintTree(t->left);
+    cout<<t->Val<<" ";
+    
+    midPrintTree(t->right);
+}
+
+void Solution::postPrintTree(TreeNode *t) {
+    if (t==NULL)
+        return;
+    postPrintTree(t->left);
+    postPrintTree(t->right);
+    cout<<t->Val<<" ";
+}
+
+void Solution::printTree(TreeNode *t) {
+    if (t==NULL)
+        return;
+    queue< TreeNode *> q;
+    TreeNode *tmp;
+    tmp=t;
+    q.push(tmp);
+    int l=0;
+    while(!q.empty()) {
+        l=q.size();
+        while(l--) {
+            tmp=q.front();
+            cout<<tmp->Val<<" ";
+            q.pop();
+            if (tmp->left)
+                q.push(tmp->left);
+            if(tmp->right)
+                q.push(tmp->right);
+        }
+        cout<<endl;
+    }
 }
 
 void cloneall(RandomListNode *p) {
@@ -1109,4 +1207,18 @@ bool Solution::hasPath(char* matrix, int rows, int cols, char* str) {
                 return true;
         }
     return false;
+}
+
+int Solution::maxDistanceTwoNode(TreeNode* t) {
+    if (t==NULL)
+        return 0;
+    if (t->left && t->right ) {
+        return max( (TreeDepth(t->left)+TreeDepth(t->right) ),max(maxDistanceTwoNode(t->left),maxDistanceTwoNode(t->right)) );
+    }
+    
+    if (t->left)
+        return maxDistanceTwoNode(t->left);
+    if (t->right)
+        return maxDistanceTwoNode(t->right);
+    
 }
