@@ -14,7 +14,7 @@
 #ifndef PART1_H
 #define PART1_H
 
-#define TEST 1
+#define TEST 0
 
 #include <vector>
 #include <iostream>
@@ -219,6 +219,16 @@ public:
      bool hasPath(char* matrix, int rows, int cols, char* str);
      
      int maxDistanceTwoNode(TreeNode *t);
+     
+//     写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。
+     int Add(int num1, int num2);
+     
+//     一个链表中包含环，请找出该链表的环的入口结点。
+     ListNode* EntryNodeOfLoop(ListNode* pHead);
+     
+//     在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，
+//     重复的结点不保留，返回链表头指针。 例如，链表1->2->3->3->4->4->5 处理后为 1->2->5
+     ListNode* deleteDuplication(ListNode* pHead);
      
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);
