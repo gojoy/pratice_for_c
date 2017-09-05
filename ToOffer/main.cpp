@@ -12,6 +12,10 @@
  */
 #include "part1.h"
 
+#undef TEST
+
+#define TEST 0
+
 #if TEST==0
 
 #include <cstdlib>
@@ -25,27 +29,12 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     cerr<<"begin\n";
-    Solution s;
-    vector<int> pre={1,2,4,6,8,7,9,5,3};
-    vector<int> mid={8,6,4,7,9,2,5,1,3};
-    vector<int> res;
-    TreeNode *t;
-    t=s.reConstructBinaryTree(pre,mid);
 
-    cout<<"print"<<endl;
-    s.midPrintTree(t);
-    cout<<endl<<"stack res is "<<endl;
-    s.midPrintTree1(t);
-    cout<<"knode is"<<s.KthNode(t,5)->Val<<endl;
-    
-//    res=s.PrintFromTopToBottom(t);
-//    cout<<"show res"<<endl;
-//    for (int i=0;i<res.size();i++) {
-//        cout<<res[i]<<" ";
-//    }
-    cout<<endl;
-    cout<<"distance is "<<s.maxDistanceTwoNode(t)<<endl;
-    
+    Solution s;
+    vector<int> a={1,2,4,7,11,16};
+    vector<int> res;
+    res=s.FindNumbersWithSum(a,17);
+    cout<<"len is "<<res.size()<<endl;
     return 0;
 }
 #endif

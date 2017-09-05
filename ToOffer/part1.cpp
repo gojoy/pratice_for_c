@@ -884,6 +884,12 @@ int Solution::TreeDepth(TreeNode* pRoot) {
 bool Solution::IsBalanced_Solution(TreeNode* pRoot) {
     if (pRoot == NULL)
         return false;
+    int left=TreeDepth(pRoot->left);
+    int right=TreeDepth(pRoot->right);
+    int diff=left-right;
+    if (diff>1 || diff <-1)
+        return false;
+    return IsBalanced_Solution(pRoot->left) && IsBalanced_Solution(pRoot->right);
 }
 
 bool checkBST(vector<int> seq, int start, int end) {
@@ -1025,10 +1031,12 @@ vector<int> Solution::FindNumbersWithSum(vector<int> array, int sum) {
     vector<int > res;
     multiset<int> s;
     int len = array.size();
-    if (sum > array[len - 1] || sum < array[0])
+    cout<<"len is "<<len<<endl;
+    if (len<1)
         return res;
     for (int i = 0; i < len; i++) {
-        s.insert(array[i]);
+        auto pos=s.insert(array[i]);
+        cout<<"insert "<<*pos;
     }
     for (int i = 0; i < len; i++) {
         if (s.find(sum - array[i]) != s.end()) {
@@ -1221,4 +1229,51 @@ int Solution::maxDistanceTwoNode(TreeNode* t) {
     if (t->right)
         return maxDistanceTwoNode(t->right);
     
+}
+int Solution::Add(int num1, int num2) {
+    while (num2!=0) {
+            int temp = num1^num2;
+            num2 = (num1&num2)<<1;
+            num1 = temp;
+        }
+        return num1;
+}
+
+ListNode* Solution::EntryNodeOfLoop(ListNode* pHead) {
+    ListNode *p,*pnext,*res;
+    p=pHead;
+    if(p->next==NULL)
+        return NULL;
+    
+    while(p!=NULL) {
+        res=p;
+        pnext=p->next;
+        p->next=NULL;
+        p=pnext;
+    }
+    return res;
+}
+
+
+ListNode* Solution::deleteDuplication(ListNode* pHead) {
+    ListNode *p,*tmp;
+    p=pHead;
+    if (p==NULL)
+        return NULL;
+    if(p->next==NULL)
+        return p;
+    tmp=p;
+    p=p->next;
+    while(p!=NULL) {
+        while (p!=NULL && p->val==tmp->val) {
+            p=p->next;
+        }
+        if(p==NULL)
+            tmp->next=NULL;
+        else {
+        tmp->next=p;
+        tmp=p;
+        p=p->next;
+        }
+    }
 }
