@@ -77,6 +77,15 @@ void Solution::replaceSpace(char* str, int length) {
 
 }
 
+ void Solution::postordertree(TreeNode *t) {
+     if (t==NULL)
+         return;
+     postordertree(t->left);
+     postordertree(t->right);
+     printf("%d ",t->Val);
+     
+ }
+
 TreeNode* Solution::reConstructBinaryTree(vector<int> pre, vector<int> vin) {
     if (pre.size() != vin.size()) {
         return NULL;
@@ -93,7 +102,7 @@ TreeNode *Solution::constructtree(vector<int> pre, int lb, int le, vector<int> v
         return NULL;
     }
     TreeNode *res = new TreeNode(pre[lb]);
-    for (int i = 0; i < vin.size(); i++) {
+    for (int i = rb; i < re; i++) {
         if (pre[lb] == vin[i]) {
             res->left = constructtree(pre, lb + 1, lb + i - rb, vin, rb, i - 1);
             res->right = constructtree(pre, lb + i - rb + 1, le, vin, i + 1, re);
