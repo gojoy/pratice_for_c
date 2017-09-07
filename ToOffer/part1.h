@@ -68,6 +68,8 @@ public:
 //    例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
     TreeNode* reConstructBinaryTree(vector<int> pre,vector<int> vin);
     
+    void postordertree(TreeNode *t);
+    
     void push( int node);
     int pop();
     
@@ -113,6 +115,22 @@ public:
      
 //     从上往下打印出二叉树的每个节点，同层节点从左至右打印。
      vector<int> PrintFromTopToBottom(TreeNode* root);
+     
+//     给定一颗二叉搜索树，请找出其中的第k大的结点。
+//     例如， 5 / \ 3 7 /\ /\ 2 4 6 8 中，按结点数值大小顺序第三个结点的值为4。
+     TreeNode* KthNode(TreeNode* pRoot, int k);
+     
+     void prePrintTree(TreeNode *t);
+     
+     void prePrintTree1(TreeNode *root);
+     
+     void midPrintTree(TreeNode *t);
+     
+     void midPrintTree1(TreeNode *t);
+     
+     void postPrintTree(TreeNode *t);
+     
+     void printTree(TreeNode *t);
      
 //     给定一颗二叉搜索树，请找出其中的第k大的结点。
 //     例如， 5 / \ 3 7 /\ /\ 2 4 6 8 中，按结点数值大小顺序第三个结点的值为4。
