@@ -31,10 +31,29 @@ int main(int argc, char** argv) {
     cerr<<"begin\n";
 
     Solution s;
-    vector<int> a={1,2,4,7,11,16};
-    vector<int> res;
-    res=s.FindNumbersWithSum(a,17);
-    cout<<"len is "<<res.size()<<endl;
+
+//    ListNode *a,*b,*c,*d,*e,*f,*g,*res;
+//    a=new ListNode(1);
+//    b=new ListNode(2);
+//    c=new ListNode(3);
+//    d=new ListNode(3);
+//    e=new ListNode(4);
+//    f=new ListNode(5);
+//    g=new ListNode(5);
+//    a->next=b,b->next=c,c->next=d,d->next=e,e->next=f,f->next=g;
+//    res=s.deleteDuplication(a);
+//    while(res!=NULL) {
+//        cout<<res->val<<" ";
+//        res=res->next;
+//    }
+    
+    string a;
+    a="ababacabacbababaabcbac";
+    string sub;
+    sub="ababaca";
+    s.KMPmatch(sub,a);
+    
+    
     return 0;
 }
 #endif

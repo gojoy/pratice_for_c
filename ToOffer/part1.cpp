@@ -93,7 +93,7 @@ TreeNode *Solution::constructtree(vector<int> pre, int lb, int le, vector<int> v
         return NULL;
     }
     TreeNode *res = new TreeNode(pre[lb]);
-    for (int i = rb; i <=re; i++) {
+    for (int i = rb; i <= re; i++) {
         if (pre[lb] == vin[i]) {
             res->left = constructtree(pre, lb + 1, lb + i - rb, vin, rb, i - 1);
             res->right = constructtree(pre, lb + i - rb + 1, le, vin, i + 1, re);
@@ -320,11 +320,11 @@ bool Solution::IsPopOrder(vector<int> pushV, vector<int> popV) {
 
 vector<int> Solution::PrintFromTopToBottom(TreeNode* root) {
 
-    
+
     TreeNode *tmp;
     vector<int> res;
-     if (root==NULL) {
-        cerr<<"print error:root NULL\n"<<endl;
+    if (root == NULL) {
+        cerr << "print error:root NULL\n" << endl;
         return res;
     }
     queue<TreeNode*> q;
@@ -332,7 +332,7 @@ vector<int> Solution::PrintFromTopToBottom(TreeNode* root) {
     while (!q.empty()) {
         tmp = q.front();
         res.push_back(tmp->Val);
-        cout<<tmp->Val;
+        cout << tmp->Val;
         q.pop();
         if (tmp->left)
             q.push(tmp->left);
@@ -343,21 +343,21 @@ vector<int> Solution::PrintFromTopToBottom(TreeNode* root) {
 }
 
 TreeNode* Solution::KthNode(TreeNode* pRoot, int k) {
-     if (pRoot==NULL)
+    if (pRoot == NULL)
         return NULL;
     stack<TreeNode*> s;
     TreeNode *t;
-    t=pRoot;
-    while(t) {
+    t = pRoot;
+    while (t) {
         s.push(t);
-        t=t->left;
+        t = t->left;
     }
-    while(!s.empty()){
-        t=s.top();
-        if(k==1) {
+    while (!s.empty()) {
+        t = s.top();
+        if (k == 1) {
             return t;
         }
-//        cout<<t->Val<<" ";
+        //        cout<<t->Val<<" ";
         s.pop();
         k--;
         if (t->right)
@@ -367,26 +367,26 @@ TreeNode* Solution::KthNode(TreeNode* pRoot, int k) {
 }
 
 void Solution::prePrintTree(TreeNode *t) {
-    if (t==NULL)
+    if (t == NULL)
         return;
-    cout<<t->Val<<" ";
+    cout << t->Val << " ";
     prePrintTree(t->left);
     prePrintTree(t->right);
 }
 
 void Solution::midPrintTree1(TreeNode *root) {
-    if (root==NULL)
+    if (root == NULL)
         return;
     stack<TreeNode*> s;
     TreeNode *t;
-    t=root;
-    while(t) {
+    t = root;
+    while (t) {
         s.push(t);
-        t=t->left;
+        t = t->left;
     }
-    while(!s.empty()){
-        t=s.top();
-        cout<<t->Val<<" ";
+    while (!s.empty()) {
+        t = s.top();
+        cout << t->Val << " ";
         s.pop();
         if (t->right)
             s.push(t->right);
@@ -394,42 +394,42 @@ void Solution::midPrintTree1(TreeNode *root) {
 }
 
 void Solution::midPrintTree(TreeNode *t) {
-    if (t==NULL)
+    if (t == NULL)
         return;
     midPrintTree(t->left);
-    cout<<t->Val<<" ";
-    
+    cout << t->Val << " ";
+
     midPrintTree(t->right);
 }
 
 void Solution::postPrintTree(TreeNode *t) {
-    if (t==NULL)
+    if (t == NULL)
         return;
     postPrintTree(t->left);
     postPrintTree(t->right);
-    cout<<t->Val<<" ";
+    cout << t->Val << " ";
 }
 
 void Solution::printTree(TreeNode *t) {
-    if (t==NULL)
+    if (t == NULL)
         return;
     queue< TreeNode *> q;
     TreeNode *tmp;
-    tmp=t;
+    tmp = t;
     q.push(tmp);
-    int l=0;
-    while(!q.empty()) {
-        l=q.size();
-        while(l--) {
-            tmp=q.front();
-            cout<<tmp->Val<<" ";
+    int l = 0;
+    while (!q.empty()) {
+        l = q.size();
+        while (l--) {
+            tmp = q.front();
+            cout << tmp->Val << " ";
             q.pop();
             if (tmp->left)
                 q.push(tmp->left);
-            if(tmp->right)
+            if (tmp->right)
                 q.push(tmp->right);
         }
-        cout<<endl;
+        cout << endl;
     }
 }
 
@@ -875,10 +875,10 @@ int Solution::TreeDepth(TreeNode* pRoot) {
 bool Solution::IsBalanced_Solution(TreeNode* pRoot) {
     if (pRoot == NULL)
         return false;
-    int left=TreeDepth(pRoot->left);
-    int right=TreeDepth(pRoot->right);
-    int diff=left-right;
-    if (diff>1 || diff <-1)
+    int left = TreeDepth(pRoot->left);
+    int right = TreeDepth(pRoot->right);
+    int diff = left - right;
+    if (diff > 1 || diff <-1)
         return false;
     return IsBalanced_Solution(pRoot->left) && IsBalanced_Solution(pRoot->right);
 }
@@ -1022,15 +1022,15 @@ vector<int> Solution::FindNumbersWithSum(vector<int> array, int sum) {
     vector<int > res;
     multiset<int> s;
     int len = array.size();
-    cout<<"len is "<<len<<endl;
-    if (len<1)
+    cout << "len is " << len << endl;
+    if (len < 1)
         return res;
-    
-    if ( sum < array[0])
+
+    if (sum < array[0])
         return res;
     for (int i = 0; i < len; i++) {
-        auto pos=s.insert(array[i]);
-        cout<<"insert "<<*pos;
+        auto pos = s.insert(array[i]);
+        cout << "insert " << *pos;
     }
     for (int i = 0; i < len; i++) {
         if (s.find(sum - array[i]) != s.end()) {
@@ -1183,7 +1183,7 @@ bool seekpath(char *matrix, int rows, int cols, bool *ispath, char *str, int pos
         return false;
     if (nextstr == strlen(str) - 1)
         return true;
-    cout<<"pos is "<<pos<<endl;
+    cout << "pos is " << pos << endl;
     ispath[pos] = true;
     if (seekpath(matrix, rows, cols, ispath, str, pos + 1, nextstr + 1) ||
             seekpath(matrix, rows, cols, ispath, str, pos - 1, nextstr + 1) ||
@@ -1200,11 +1200,11 @@ bool Solution::hasPath(char* matrix, int rows, int cols, char* str) {
         return false;
 
     bool ispath[rows * cols];
-    for(int x=0;x<rows*cols;x++)
-        ispath[x]=false;
+    for (int x = 0; x < rows * cols; x++)
+        ispath[x] = false;
     for (int j = 0; j < rows; j++)
         for (int i = 0; i < cols; i++) {
-            cout<<"in main pos is "<<j*cols+i<<endl;
+            cout << "in main pos is " << j * cols + i << endl;
             if (seekpath(matrix, rows, cols, ispath, str, j * cols + i, 0))
                 return true;
         }
@@ -1212,62 +1212,103 @@ bool Solution::hasPath(char* matrix, int rows, int cols, char* str) {
 }
 
 int Solution::maxDistanceTwoNode(TreeNode* t) {
-    if (t==NULL)
+    if (t == NULL)
         return 0;
-    if (t->left && t->right ) {
-        return max( (TreeDepth(t->left)+TreeDepth(t->right) ),max(maxDistanceTwoNode(t->left),maxDistanceTwoNode(t->right)) );
+    if (t->left && t->right) {
+        return max((TreeDepth(t->left) + TreeDepth(t->right)), max(maxDistanceTwoNode(t->left), maxDistanceTwoNode(t->right)));
     }
-    
+
     if (t->left)
         return maxDistanceTwoNode(t->left);
     if (t->right)
         return maxDistanceTwoNode(t->right);
-    
+
 }
+
 int Solution::Add(int num1, int num2) {
-    while (num2!=0) {
-            int temp = num1^num2;
-            num2 = (num1&num2)<<1;
-            num1 = temp;
-        }
-        return num1;
+    while (num2 != 0) {
+        int temp = num1^num2;
+        num2 = (num1 & num2) << 1;
+        num1 = temp;
+    }
+    return num1;
 }
 
 ListNode* Solution::EntryNodeOfLoop(ListNode* pHead) {
-    ListNode *p,*pnext,*res;
-    p=pHead;
-    if(p->next==NULL)
+    ListNode *p, *pnext, *res;
+    p = pHead;
+    if (p->next == NULL)
         return NULL;
-    
-    while(p!=NULL) {
-        res=p;
-        pnext=p->next;
-        p->next=NULL;
-        p=pnext;
+
+    while (p != NULL) {
+        res = p;
+        pnext = p->next;
+        p->next = NULL;
+        p = pnext;
     }
     return res;
 }
 
-
 ListNode* Solution::deleteDuplication(ListNode* pHead) {
-    ListNode *p,*tmp;
-    p=pHead;
-    if (p==NULL)
-        return NULL;
-    if(p->next==NULL)
-        return p;
-    tmp=p;
-    p=p->next;
-    while(p!=NULL) {
-        while (p!=NULL && p->val==tmp->val) {
-            p=p->next;
-        }
-        if(p==NULL)
-            tmp->next=NULL;
-        else {
-        tmp->next=p;
-        tmp=p;
-        p=p->next;
+    ListNode *p, *pre, *tmp;
+    p = pHead;
+    if (p == NULL || p->next == NULL)
+        return pHead;
+    pre = p;
+    p = p->next;
+    while (p != NULL) {
+        if (p->val == pre->val) {
+            tmp = p->next;
+            pre->next = p->next;
+            p->next = NULL;
+            if (tmp == NULL) {
+                break;
+            }
+            pre = tmp;
+            p = pre->next;
+        } else {
+            pre = p;
+            p = p->next;
         }
     }
+    return pHead;
+}
+
+int Solution::KMPmatch(string sub, string s) {
+    vector<int> pai;
+    pai = kmpFunction(sub);
+    for (int i=0;i<pai.size();i++) {
+        cout<<" "<<pai[i];
+    }
+    cout<<endl;
+    int m=sub.size();
+    int n=s.size();
+    int q=0;
+    for (int i = 0; i < n;i++) {
+        while(q>0 && sub[q]!=s[i])
+            q=pai[q];
+        if(sub[q]==s[i])
+            q++;
+        if (q==m) {
+            cout<<"all match is "<<i<<endl;
+            q=pai[q];
+        }
+    }
+    cout<<"kmpend"<<endl;
+    return q;
+}
+
+vector<int> Solution::kmpFunction(string p) {
+    cout<<"p is "<<p<<endl;
+    int l = p.size();
+    int k = 0;
+    vector<int> res(l , 0);
+    for (int q = 1; q < l; q++) {
+        while (k > 0 && p[k] != p[q])
+            k = res[k];
+        if (p[k] == p[q])
+            k++;
+        res[q] = k;
+    }
+    return res;
 }

@@ -230,6 +230,11 @@ public:
 //     重复的结点不保留，返回链表头指针。 例如，链表1->2->3->3->4->4->5 处理后为 1->2->5
      ListNode* deleteDuplication(ListNode* pHead);
      
+     //int KMPmatch(string sub,string s);
+     int KMPmatch(string sub, string s);
+     
+     vector<int> kmpFunction(string p);
+     
 private:
     TreeNode *constructtree(vector<int> pre,int lb,int le,vector<int> vin,int rb,int re);
     
